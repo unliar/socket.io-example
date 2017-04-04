@@ -12,7 +12,11 @@
     <header>
         this is from node server
     </header>
-    <p>这是首个关于socket.io的例子,上面的文字由服务器发送~</p>
+    <p>这是首个关于socket.io的例子,上面的文字由服务器发送~下面你的输入实时显示在输入框下方，但是无法共享给其他成员。</p>
+    <input type="text" id="yourinput" placeholder="假装是双向数据绑定">
+    <footer>
+
+    </footer>
 </body>
 
 <script src="../socket.io.js"></script>
@@ -24,8 +28,18 @@
         socket.emit('one', 'from demo-start');
         //监听one事件,并且响应
         socket.on('one', (res) => {
-            document.querySelector('header').innerHTML = res;
-        })
+            document.querySelector('header').innerHTML = res.status;
+
+        });
+        document.querySelector('#yourinput').onkeyup = function () {
+            var val = this.value;
+            socket.emit('one', val);
+            socket.on('one', (res) => {
+                document.querySelector('footer').innerHTML = res.data;
+
+            });
+
+        }
     }
 
 </script>

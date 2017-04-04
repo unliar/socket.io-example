@@ -10,7 +10,7 @@ io.on('connection', (socket) => {
         console.log(res);
         //response some data to browser;
         //向浏览器发送数据
-        socket.emit('one', 'i have got your data from browser');
+        socket.emit('one', { status: 'i have got your message from browser，service starts', data: res });
     });
 
 
