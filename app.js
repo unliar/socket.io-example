@@ -9,14 +9,12 @@ var app = express();
 var port = process.env.PORT || 18080;
 app.set('port', port);
 var server = http.createServer(app);
-var io=require('./socketMethods/top');
+var io = require('./socketMethods/top');
 io.listen(server);
 server.listen(port);
 server.on('error', () => console.log('eerror'));
 server.on('listening', () => console.log('listening in ', port));
 // view engine setup
-
-app.set('view engine', 'jade');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -26,7 +24,7 @@ app.use(bodyParser.urlencoded({
   extended: false
 }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public/vue/dist')));
+app.use('/demo', express.static(path.join(__dirname, 'public/vue/mydemo')));
 
 
 

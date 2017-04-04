@@ -1,43 +1,21 @@
-var io=require('socket.io')();
+var io = require('socket.io')();
 
 io.on('connection', (socket) => {
     console.log('socketio已经连接');
-/*
-sendone
-私聊
-msg={
-toid:'发送目标',
-fromid:'来源',
-tonickname:"目标昵称',
-fromnickname:'来源昵称'
-content:'消息主题'
-}
-*/  
-    socket.on('sendone',function(msg){
-        console.log(msg)
-       var msgto=msg.to;
-       var msgfrom=msg.from;
-       var msgcontent=msg.content;
-       socket.emit(`getone${msgto}`,{msg:msgcontent})
-       
-    });
-/*
-sendgroup
-群聊
-msg={
-to:'发送目标',
-from:'来源',
-content:'消息主体'
-}
-*/
-    socket.on('sendgroup',function(msg){
 
-    })
+    //demo-start
+    socket.on('one', res => {
+        //receive data from browser emit
+        //打印出来自浏览器的emit数据
+        console.log(res);
+        //response some data to browser;
+        //向浏览器发送数据
+        socket.emit('one', 'i have got your data from browser');
+    });
+
+
 })
 
-
-
-
-exports.listen=(server)=>{
-  return io.listen(server)
+exports.listen = (server) => {
+    return io.listen(server)
 } 
