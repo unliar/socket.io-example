@@ -3,4 +3,4 @@
 <P>一些关于socket.io的例子,可能会用到Express和Vue,最终目的是想实现点对点聊天</p>
 <P>npm i</p>
 <P>npm start</p>
-<P>url：127.0.0.1/demo/demo-****.... </p>
+<P>url：127.0.0.1:18080/demo/demo-****.... </p>
