@@ -23,16 +23,17 @@
   var socket = io.connect('http://127.0.0.1:18080');
   window.onload = function () {
     //激活one事件，并且发送'from demo-start'
-    socket.emit('one', 'from demo-start');
+    //socket.emit('one', 'from demo-start', '444');
     //监听one事件,并且响应
     socket.on('one', (res) => {
       document.querySelector('header').innerHTML = res.status;
       document.querySelector('footer').innerHTML = res.data;
+      console.log(res)
 
     });
     document.querySelector('#yourinput').onkeyup = function () {
       var val = this.value;
-      socket.emit('one', val);
+      socket.emit('one', val, 'lol');
 
     }
   }
